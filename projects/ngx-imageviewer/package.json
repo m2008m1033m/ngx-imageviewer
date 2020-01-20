@@ -1,16 +1,16 @@
 {
-  "name": "@hallysonh/ngx-imageviewer",
+  "name": "@mnm/ngx-imageviewer",
   "version": "0.0.0-development",
-  "author": "Hallyson Almeida <hallysonh@gmail.com>",
+  "author": "Mr. Boring <m2008m1033m@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hallysonh/ngx-imageviewer"
+    "url": "https://github.com/m2008m1033m/ngx-imageviewer"
   },
   "keywords":[
     "image", "viewer", "angular", "pdf", "canvas", "component"
   ],
-  "homepage": "https://github.com/hallysonh/ngx-imageviewer#readme",
+  "homepage": "https://github.com/m2008m1033m/ngx-imageviewer#readme",
   "peerDependencies": {
     "@angular/common": "^8.2.10",
     "@angular/core": "^8.2.10",

@@ -9,8 +9,9 @@ import {
   MatIconModule, MatListModule, MatFormFieldModule,
   MatInputModule, MatButtonToggleModule, MatSlideToggleModule, MatProgressSpinnerModule
 } from '@angular/material';
+import { ImageViewerModule } from 'projects/ngx-imageviewer/src/public_api';
 
-import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
+// import { ImageViewerModule } from '@hallysonh/ngx-imageviewer';
 
 @NgModule({
   imports: [

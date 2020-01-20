@@ -12,6 +12,8 @@ import { AutoResizeComponent } from './autoresize/autoresize.component';
 import { UploadPreviewComponent } from './uploadpreview/uploadpreview.component';
 import { ConditionalDisplayComponent } from './conditionaldisplay/conditionaldisplay.component';
 
+import { MnmWebappModule } from 'mnm-webapp';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,13 @@ import { ConditionalDisplayComponent } from './conditionaldisplay/conditionaldis
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    MnmWebappModule.forRoot({
+      oauthConfig: {
+        claimsUrl: '',
+        oauthUrl: ''
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

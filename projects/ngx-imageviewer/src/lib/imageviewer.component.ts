@@ -63,7 +63,7 @@ export class ImageViewerComponent implements AfterViewInit, OnDestroy {
     this.resetImage();
   }
 
-  @ViewChild('imageContainer', {static: false}) canvasRef: any;
+  @ViewChild('imageContainer', { static: false }) canvasRef: any;
   //#endregion
 
   //#region Private properties
@@ -172,6 +172,9 @@ export class ImageViewerComponent implements AfterViewInit, OnDestroy {
         this._imageResource = new ImageResourceLoader();
       }
       this._resource = this._imageResource;
+
+      // mnm edit: only draw if src, or filetype has changed.
+      this.draw();
     } else if (this.isPdf(this.src) && (!this._resource || !(this._resource instanceof PdfResourceLoader))) {
       if (this._resourceChangeSub) {
         this._resourceChangeSub.unsubscribe();
@@ -180,19 +183,29 @@ export class ImageViewerComponent implements AfterViewInit, OnDestroy {
         this._pdfResource = new PdfResourceLoader(this._imageCache);
       }
       this._resource = this._pdfResource;
+
+      // mnm edit: only draw if src, or filetype has changed.
+      this.draw();
     }
-    if (this._resource) {
-      this._resource.src = this.src instanceof File ? URL.createObjectURL(this.src) : this.src;
-      this._resourceChangeSub = this._resource.onResourceChange().subscribe(() => {
-        this.updateCanvas();
-        if (this.src instanceof File) {
-          URL.revokeObjectURL(this._resource.src);
-        }
-      });
-      this._resource.setUp();
-      this.resetImage();
-      if (this._context) { this.updateCanvas(); }
+    else {
+      // mnm edit: we need to reset every thing and clear the canvas
+      // once any of the src or filetype gets reset.
+      this._resource = null;
+      this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
+  }
+
+  private draw() {
+    this._resource.src = this.src instanceof File ? URL.createObjectURL(this.src) : this.src;
+    this._resourceChangeSub = this._resource.onResourceChange().subscribe(() => {
+      this.updateCanvas();
+      if (this.src instanceof File) {
+        URL.revokeObjectURL(this._resource.src);
+      }
+    });
+    this._resource.setUp();
+    this.resetImage();
+    if (this._context) { this.updateCanvas(); }
   }
   //#endregion
 
