@@ -191,7 +191,10 @@ export class ImageViewerComponent implements AfterViewInit, OnDestroy {
       // mnm edit: we need to reset every thing and clear the canvas
       // once any of the src or filetype gets reset.
       this._resource = null;
-      this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
+
+      if (this._context) {
+        this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
+      }
     }
   }
 

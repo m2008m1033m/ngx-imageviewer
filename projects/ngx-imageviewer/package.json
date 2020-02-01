@@ -1,6 +1,6 @@
 {
-  "name": "@mnm/ngx-imageviewer",
-  "version": "0.0.0-development",
+  "name": "mnm-ngx-imageviewer",
+  "version": "0.0.2",
   "author": "Mr. Boring <m2008m1033m@gmail.com>",
   "license": "MIT",
   "repository": {
